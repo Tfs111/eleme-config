@@ -1,0 +1,34 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1
+        - id: merchant-service
+          uri: lb://merchant-service
+          predicates:
+            - Path=/api/merchant/**
+          filters:
+            - StripPrefix=1
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - StripPrefix=1
+        - id: consumer-service
+          uri: lb://consumer-service
+          predicates:
+            - Path=/api/cart/**
+          filters:
+            - StripPrefix=1
+        - id: food-service
+          uri: lb://merchant-service
+          predicates:
+            - Path=/api/food/**
+          filters:
+            - StripPrefix=1
